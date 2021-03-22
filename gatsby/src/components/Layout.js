@@ -3,6 +3,8 @@ import 'normalize.css';
 import styled from 'styled-components';
 import GlobalStyles from '../styles/GlobalStyles';
 import Typography from '../styles/Typography';
+import Header from './Header';
+import Footer from './Footer';
 
 const ContainerStyles = styled.div`
 
@@ -18,7 +20,9 @@ export default function Layout({ children }) {
             <GlobalStyles />
             <Typography />
             <ContainerStyles>
-                { children }
+                <Header />
+                    { children }
+                <Footer />
             </ContainerStyles>
         </>
     )

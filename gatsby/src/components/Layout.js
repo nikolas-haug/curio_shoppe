@@ -5,6 +5,7 @@ import GlobalStyles from '../styles/GlobalStyles';
 import Typography from '../styles/Typography';
 import Header from './Header';
 import Footer from './Footer';
+import Main from './Main';
 
 const ContainerStyles = styled.div`
 

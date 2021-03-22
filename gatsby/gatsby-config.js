@@ -11,6 +11,14 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     // {
+    //   resolve: `gatsby-plugin-google-fonts`,
+    //   options: {
+    //     fonts: [
+    //       ''
+    //     ]
+    //   }
+    // },
+    // {
     //   resolve: `gatsby-source-sanity`,
     //   options: {
     //     projectId: '',

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Sidebar from './Sidebar';
 import Content from './Content';
+import useSticky from '../utils/useSticky';
 
 const MainStyles = styled.main`
 
@@ -11,11 +12,14 @@ const MainStyles = styled.main`
 `;
 
 export default function Main({ children }) {
+
+    const { isSticky, element } = useSticky();
+
     return (
         <>
             <MainStyles>
-                <Sidebar />
-                <Content>
+                <Sidebar sticky={isSticky} element={element} />
+                <Content sticky={isSticky} element={element}>
                     {children}
                 </Content>
             </MainStyles>

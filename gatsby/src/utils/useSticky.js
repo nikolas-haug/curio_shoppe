@@ -1,13 +1,16 @@
-import { useEffect, useState, useRef } from "react"
+import { useState, useRef, useEffect } from 'react';
 
 function useSticky() {
-  const [isSticky, setSticky] = useState(false)
-  const element = useRef(null)
+  const [isSticky, setSticky] = useState(false);
+  const [elementTop, setElementTop] = useState(null);
+  const element = useRef(null);
 
   const handleScroll = () => {
-    window.scrollY > element.current.getBoundingClientRect().bottom
-      ? setSticky(true)
-      : setSticky(false)
+    if (elementTop && window.pageYOffset > elementTop) {
+      setSticky(true);
+    } else {
+      setSticky(false);
+    }
   }
 
   // This function handles the scroll performance issue
@@ -28,13 +31,20 @@ function useSticky() {
   }
 
   useEffect(() => {
-    window.addEventListener("scroll", debounce(handleScroll))
+    setElementTop(element.current.offsetTop);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    console.log('add event');
     return () => {
-      window.removeEventListener("scroll", () => handleScroll)
+      window.removeEventListener('scroll', handleScroll);
+      console.log('remove event!');
     }
-  }, [debounce, handleScroll])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debounce, elementTop]);
 
-  return { isSticky, element }
+  return {
+    isSticky,
+    element
+  }
 }
 
 export default useSticky;

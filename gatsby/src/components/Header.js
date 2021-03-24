@@ -34,8 +34,9 @@ export default function Header() {
             <HeaderStyles>
                 <NavStyles>
                     <Link to={'/'}>
-                        <img src="https://source.unsplash.com/55x55" alt=""/>
-                        <h1 className="visually-hidden">Curio Shoppe</h1>
+                        {/* <img src="https://source.unsplash.com/55x55" alt=""/> */}
+                        <h1>CYBERCURIO</h1>
+                        <h1 className="visually-hidden">CyberCurio</h1>
                     </Link>
                     <ul>
                         <li>

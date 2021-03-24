@@ -7,7 +7,7 @@ const Typography = createGlobalStyle`
     }
 
     body {
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: 'Alegreya Sans', sans-serif;
         line-height: 1.5;
     }
 

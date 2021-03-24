@@ -10,14 +10,15 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
-    // {
-    //   resolve: `gatsby-plugin-google-fonts`,
-    //   options: {
-    //     fonts: [
-    //       ''
-    //     ]
-    //   }
-    // },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          'alegreya sans\:300, 300i, 400, 400i, 700'
+        ],
+        display: 'swap'
+      }
+    },
     // {
     //   resolve: `gatsby-source-sanity`,
     //   options: {

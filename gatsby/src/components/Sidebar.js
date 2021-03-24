@@ -1,11 +1,11 @@
-import React, { useRef, useState, useEffect, useContext } from 'react';
+import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 
 const SidebarStyles = styled.aside`
 
     width: 25%;
-    padding: 0 1.5rem;
+    padding: 1.5rem 1.5rem;
 
     h3 {
         margin-bottom: 2rem;
@@ -27,31 +27,10 @@ const SidebarStyles = styled.aside`
 
 `;
 
-export default function Sidebar() {
-
-    // const [sticky, setSticky] = useContext(StickyContext);
-    // console.log(sticky);
-    // const sidebarRef = useRef(null);
-    // const sidebarTop = sidebarRef.current.offsetTop; 
-
-    // const handleScroll = () => {
-    //     if(window.pageYOffset >= sidebarTop) {
-    //         sidebarRef.current.classList.add('sticky');
-    //     } else {
-    //         sidebarRef.current.classList.remove('sticky');
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     window.addEventListener('scroll', handleScroll, { passive: true });
-    //     return () => {
-    //         window.removeEventListener('scroll', handleScroll);
-    //     }
-    // }, []);
-
+export default function Sidebar({ sticky, element }) {
     return (
         <>
-            <SidebarStyles>
+            <SidebarStyles ref={element} className={sticky ? 'sticky' : ''}>
                 <h3>CATEGORIES FILTER</h3>
                 <ul>
                     <li>

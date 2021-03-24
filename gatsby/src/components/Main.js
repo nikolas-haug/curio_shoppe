@@ -11,6 +11,8 @@ const MainStyles = styled.main`
 `;
 
 export default function Main({ children }) {
+
+
     return (
         <>
             <MainStyles>

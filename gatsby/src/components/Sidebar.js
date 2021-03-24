@@ -1,11 +1,11 @@
-import React, { useRef, useState, useEffect, useContext } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 
 const SidebarStyles = styled.aside`
 
     width: 25%;
-    padding: 0 1.5rem;
+    padding: 1.5rem 1.5rem;
 
     h3 {
         margin-bottom: 2rem;
@@ -29,29 +29,35 @@ const SidebarStyles = styled.aside`
 
 export default function Sidebar() {
 
-    // const [sticky, setSticky] = useContext(StickyContext);
-    // console.log(sticky);
-    // const sidebarRef = useRef(null);
-    // const sidebarTop = sidebarRef.current.offsetTop; 
+    const [isSticky, setSticky] = useState(false);
+    const [sidebarTop, setSidebarTop] = useState(null);
+    const sidebarRef = useRef(null);
 
-    // const handleScroll = () => {
-    //     if(window.pageYOffset >= sidebarTop) {
-    //         sidebarRef.current.classList.add('sticky');
-    //     } else {
-    //         sidebarRef.current.classList.remove('sticky');
-    //     }
-    // }
+    const handleScroll = () => {
+        console.log('pageYOffset: ', window.pageYOffset);
+        console.log('sidebarTop:', sidebarTop);
+        if (sidebarTop && window.pageYOffset > sidebarTop) {
+            // sidebarRef.current.classList.add('sticky');
+            setSticky(true);
+        } else {
+            // sidebarRef.current.classList.remove('sticky');
+            setSticky(false);
+        }
+    }
 
-    // useEffect(() => {
-    //     window.addEventListener('scroll', handleScroll, { passive: true });
-    //     return () => {
-    //         window.removeEventListener('scroll', handleScroll);
-    //     }
-    // }, []);
+    useEffect(() => {
+        setSidebarTop(sidebarRef.current.offsetTop);
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        console.log('add event');
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            console.log('remove event!');
+        }
+    }, [sidebarTop]);
 
     return (
         <>
-            <SidebarStyles>
+            <SidebarStyles ref={sidebarRef} className={isSticky ? 'sticky' : ''}>
                 <h3>CATEGORIES FILTER</h3>
                 <ul>
                     <li>

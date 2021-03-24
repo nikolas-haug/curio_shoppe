@@ -1,40 +1,34 @@
-import { useEffect, useState, useRef } from "react"
+import { useState, useRef, useEffect } from 'react';
 
 function useSticky() {
-  const [isSticky, setSticky] = useState(false)
-  const element = useRef(null)
+  const [isSticky, setSticky] = useState(false);
+  const [elementTop, setElementTop] = useState(null);
+  const element = useRef(null);
 
   const handleScroll = () => {
-    window.scrollY > element.current.getBoundingClientRect().bottom
-      ? setSticky(true)
-      : setSticky(false)
-  }
-
-  // This function handles the scroll performance issue
-  const debounce = (func, wait = 20, immediate = true) => {
-    let timeOut
-    return () => {
-      let context = this,
-        args = arguments
-      const later = () => {
-        timeOut = null
-        if (!immediate) func.apply(context, args)
-      }
-      const callNow = immediate && !timeOut
-      clearTimeout(timeOut)
-      timeOut = setTimeout(later, wait)
-      if (callNow) func.apply(context, args)
+    console.log('pageYOffset: ', window.pageYOffset);
+    console.log('sidebarTop:', elementTop);
+    if (elementTop && window.pageYOffset > elementTop) {
+      setSticky(true);
+    } else {
+      setSticky(false);
     }
   }
 
   useEffect(() => {
-    window.addEventListener("scroll", debounce(handleScroll))
+    setElementTop(element.current.offsetTop);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    console.log('add event');
     return () => {
-      window.removeEventListener("scroll", () => handleScroll)
+      window.removeEventListener('scroll', handleScroll);
+      console.log('remove event!');
     }
-  }, [debounce, handleScroll])
+  }, [elementTop]);
 
-  return { isSticky, element }
+  return {
+    isSticky,
+    element
+  }
 }
 
 export default useSticky;

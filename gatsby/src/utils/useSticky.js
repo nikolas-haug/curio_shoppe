@@ -6,12 +6,27 @@ function useSticky() {
   const element = useRef(null);
 
   const handleScroll = () => {
-    console.log('pageYOffset: ', window.pageYOffset);
-    console.log('sidebarTop:', elementTop);
     if (elementTop && window.pageYOffset > elementTop) {
       setSticky(true);
     } else {
       setSticky(false);
+    }
+  }
+
+  // This function handles the scroll performance issue
+  const debounce = (func, wait = 20, immediate = true) => {
+    let timeOut
+    return () => {
+      let context = this,
+        args = arguments
+      const later = () => {
+        timeOut = null
+        if (!immediate) func.apply(context, args)
+      }
+      const callNow = immediate && !timeOut
+      clearTimeout(timeOut)
+      timeOut = setTimeout(later, wait)
+      if (callNow) func.apply(context, args)
     }
   }
 
@@ -23,7 +38,8 @@ function useSticky() {
       window.removeEventListener('scroll', handleScroll);
       console.log('remove event!');
     }
-  }, [elementTop]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debounce, elementTop]);
 
   return {
     isSticky,

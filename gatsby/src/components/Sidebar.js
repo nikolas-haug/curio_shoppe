@@ -11,12 +11,21 @@ const SidebarStyles = styled.aside`
         margin-bottom: 2rem;
     }
 
+    ul {
+        border-radius: 5px;
+        background-color: lightblue;
+        padding: 2rem;
+        width: ${ props => props.sticky ? '222.5px' : 'auto' };
+        color: ${ props => props.sticky ? 'blue' : 'green' };
+    }
+
     li {
         margin-bottom: 1.5rem;
     }
 
     a {
         font-size: 1.6rem;
+        color: ${ props => props.sticky ? 'blue' : 'green' };
     }
 
     &.sticky {
@@ -30,7 +39,7 @@ const SidebarStyles = styled.aside`
 export default function Sidebar({ sticky, element }) {
     return (
         <>
-            <SidebarStyles ref={element} className={sticky ? 'sticky' : ''}>
+            <SidebarStyles ref={element} className={sticky ? 'sticky' : ''} sticky={sticky}>
                 <h3>CATEGORIES FILTER</h3>
                 <ul>
                     <li>

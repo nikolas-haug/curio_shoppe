@@ -11,12 +11,28 @@ const SidebarStyles = styled.aside`
         margin-bottom: 2rem;
     }
 
-    li {
+    ul {
+        background-color: var(--color-blue-1);
+        padding: 2rem;
+        width: ${ props => props.sticky ? '222.5px' : 'auto' };
+        border-radius: 5px;
+    }
+
+    li:not(:last-child) {
         margin-bottom: 1.5rem;
     }
 
     a {
+        display: block;
         font-size: 1.6rem;
+        color: var(--color-black);
+        border-radius: 5px;
+        padding: .5rem;
+        transition: all .2s ease;
+        &:hover {
+            background-color: var(--color-grey-1);
+            color: var(--color-white);
+        }
     }
 
     &.sticky {
@@ -30,7 +46,7 @@ const SidebarStyles = styled.aside`
 export default function Sidebar({ sticky, element }) {
     return (
         <>
-            <SidebarStyles ref={element} className={sticky ? 'sticky' : ''}>
+            <SidebarStyles ref={element} className={sticky ? 'sticky' : ''} sticky={sticky}>
                 <h3>CATEGORIES FILTER</h3>
                 <ul>
                     <li>

@@ -5,18 +5,21 @@ const GlobalStyles = createGlobalStyle`
 :root {
         --container-size: 1040px;
 
-        --color-black: #212121;
+        --color-black: #2D3B3F;
         --color-white: #fff;
+        --color-grey-1: #ACBBC1;
+        --color-grey-2: #334A52;
 
-        --color-green-1: #67C072;
-        --color-green-2: #71CB7D;
-        --color-green-3: #317D3B;
-        --color-green-4: #4A9C54;
+        --color-blue-1: #e3f3f9;
+        --color-blue-2: #C3D3E2;
+        --color-blue-3: #7DB3C6;
 
-        --color-blue-1: #008BCB;
-        --color-blue-2: #1E3E7E;
+        --color-green-1: #C0DBC0;
+        --color-green-2: #7FD1AE;
 
-        --color-red-1: #B72034;
+        --color-brown-1: #CEB3A0;
+
+        --color-purple-1: #E3C8EA;
 
     }
 
@@ -86,7 +89,7 @@ const GlobalStyles = createGlobalStyle`
         width: 100%;
         border-radius: 3px;
         border-style: none;
-        background: var(--color-green-3);
+        background: var(--color-blue-3);
         color: var(--color-white);
         font-size: 1.8rem;
         text-transform: none;
@@ -103,7 +106,7 @@ const GlobalStyles = createGlobalStyle`
         }
 
         &:hover {
-            background-color: var(--color-green-4);
+            background-color: var(--color-blue-2);
         }
     }
 

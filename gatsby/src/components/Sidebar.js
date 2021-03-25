@@ -12,20 +12,27 @@ const SidebarStyles = styled.aside`
     }
 
     ul {
-        border-radius: 5px;
-        background-color: lightblue;
+        background-color: var(--color-blue-1);
         padding: 2rem;
         width: ${ props => props.sticky ? '222.5px' : 'auto' };
-        color: ${ props => props.sticky ? 'blue' : 'green' };
+        border-radius: 5px;
     }
 
-    li {
+    li:not(:last-child) {
         margin-bottom: 1.5rem;
     }
 
     a {
+        display: block;
         font-size: 1.6rem;
-        color: ${ props => props.sticky ? 'blue' : 'green' };
+        color: var(--color-black);
+        border-radius: 5px;
+        padding: .5rem;
+        transition: all .2s ease;
+        &:hover {
+            background-color: var(--color-grey-1);
+            color: var(--color-white);
+        }
     }
 
     &.sticky {

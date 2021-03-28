@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 
 const SidebarStyles = styled.aside`
@@ -7,13 +7,15 @@ const SidebarStyles = styled.aside`
     width: 25%;
     padding: 1.5rem 1.5rem;
 
-    h3 {
+    .sidebar__heading {
         margin-bottom: 2rem;
+        text-transform: uppercase;
     }
 
     ul {
         background-color: var(--color-blue-1);
         padding: 2rem;
+        //TODO: adjust fixed margin accordingly
         width: ${ props => props.sticky ? '222.5px' : 'auto' };
         border-radius: 5px;
     }
@@ -44,20 +46,28 @@ const SidebarStyles = styled.aside`
 `;
 
 export default function Sidebar({ sticky, element }) {
+    const data = useStaticQuery(graphql`
+        query CategoriesQuery {
+            categories: allSanityCategory {
+                nodes {
+                    name
+                    id
+                }
+            }
+        }
+    `);
+    const categories = data.categories.nodes;
+
     return (
         <>
             <SidebarStyles ref={element} className={sticky ? 'sticky' : ''} sticky={sticky}>
-                <h3>CATEGORIES FILTER</h3>
+                <h3 className="sidebar__heading">peruse by category</h3>
                 <ul>
-                    <li>
-                        <Link to={'/'}>category</Link>
-                    </li>
-                    <li>
-                        <Link to={'/'}>category</Link>
-                    </li>
-                    <li>
-                        <Link to={'/'}>category</Link>
-                    </li>
+                    {categories.map((category) => (
+                        <li key={category.id}>
+                            <Link to={`/${category.name.toLowerCase()}`}>{category.name}</Link>
+                        </li>
+                    ))}
                 </ul>
             </SidebarStyles>
         </>

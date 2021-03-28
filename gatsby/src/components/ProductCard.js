@@ -20,8 +20,6 @@ const ProductCardStyles = styled.div`
     }
 
     .image-wrapper {
-        /* height: 24rem;
-        overflow: hidden; */
         img {
             max-width: 100%;
             display: block;

@@ -31,6 +31,9 @@ export const query = graphql`
       name
       price
       description
+      slug {
+        current
+      }
       image {
         asset {
           gatsbyImageData(

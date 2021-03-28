@@ -10,6 +10,9 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
@@ -19,15 +22,15 @@ module.exports = {
         display: 'swap'
       }
     },
-    // {
-    //   resolve: `gatsby-source-sanity`,
-    //   options: {
-    //     projectId: '',
-    //     dataset: 'production',
-    //     watchMode: true,
-    //     token: process.env.SANITY_TOKEN
-    //   }
-    // },
+    {
+      resolve: `gatsby-source-sanity`,
+      options: {
+        projectId: 'danec5us',
+        dataset: 'production',
+        watchMode: true,
+        token: process.env.SANITY_TOKEN
+      }
+    },
     // {
     //   resolve: `gatsby-plugin-snipcart-advanced`,
     //   options: {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import styled from 'styled-components';
 
 const ProductCardStyles = styled.div`
@@ -19,9 +20,8 @@ const ProductCardStyles = styled.div`
     }
 
     .image-wrapper {
-        height: 24rem;
-        overflow: hidden;
-        position: relative;
+        /* height: 24rem;
+        overflow: hidden; */
         img {
             max-width: 100%;
             display: block;
@@ -41,17 +41,20 @@ const ProductCardStyles = styled.div`
 
 `;
 
-export default function ProductCard() {
+export default function ProductCard({ product }) {
+    const image = getImage(product.image.asset);
+    console.log(image);
+
     return (
         <>
             <ProductCardStyles>
                 <Link to={'/'} className="product-card__link">
                     <div className="image-wrapper">
-                        <img src="https://source.unsplash.com/random" alt=""/>
+                        <GatsbyImage image={image} alt={product.name} />
                     </div>
                     <div className="product-card__action">
-                        <h3>product name</h3>
-                        <span>$ price</span>
+                        <h3>{product.name}</h3>
+                        <span>$ {product.price}</span>
                     </div>
                 </Link>
             </ProductCardStyles>

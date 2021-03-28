@@ -8,6 +8,7 @@ export default {
             title: 'Product name',
             type: 'string',
             description: 'Name of the product',
+            validation: Rule => Rule.required()
         },
         {
             name: 'slug',
@@ -35,5 +36,19 @@ export default {
             description: 'Description of the product',
             validation: Rule => Rule.required()
         },
+        {
+            name: 'price',
+            title: 'Price',
+            type: 'number',
+            description: 'Price in USD',
+            validation: Rule => Rule.required()
+        },
+        {
+            name: 'category',
+            title: 'Product Category',
+            type: 'array',
+            of: [{ type: 'reference', to: [{ type: 'category' }] }],
+            validation: Rule => Rule.required().min(1),
+        }
     ]
 }

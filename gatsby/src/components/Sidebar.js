@@ -63,9 +63,12 @@ export default function Sidebar({ sticky, element }) {
             <SidebarStyles ref={element} className={sticky ? 'sticky' : ''} sticky={sticky}>
                 <h3 className="sidebar__heading">peruse by category</h3>
                 <ul>
+                    <li>
+                        <Link to={'/'}>All Items</Link>
+                    </li>
                     {categories.map((category) => (
                         <li key={category.id}>
-                            <Link to={`/${category.name.toLowerCase()}`}>{category.name}</Link>
+                            <Link to={`/category/${category.name.toLowerCase()}`}>{category.name}</Link>
                         </li>
                     ))}
                 </ul>

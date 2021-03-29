@@ -21,27 +21,35 @@ export default function Home({ data }) {
 }
 
 export const query = graphql`
-  query ProductsQuery {
-  products: allSanityProduct {
-    nodes {
-      category {
+  query ProductsQuery($categoryRegex: String) {
+    products: allSanityProduct(filter: {
+            category: {
+                elemMatch: {
+                    name: {
+                        regex: $categoryRegex
+                    }
+                }
+            }
+        }) {
+      nodes {
+        category {
+          name
+        }
+        id
         name
-      }
-      id
-      name
-      price
-      description
-      slug {
-        current
-      }
-      image {
-        asset {
-          gatsbyImageData(
-            placeholder: BLURRED
-          )
+        price
+        description
+        slug {
+          current
+        }
+        image {
+          asset {
+            gatsbyImageData(
+              placeholder: BLURRED
+            )
+          }
         }
       }
     }
   }
-}
 `;

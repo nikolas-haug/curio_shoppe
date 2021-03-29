@@ -41,12 +41,11 @@ const ProductCardStyles = styled.div`
 
 export default function ProductCard({ product }) {
     const image = getImage(product.image.asset);
-    console.log(image);
 
     return (
         <>
             <ProductCardStyles>
-                <Link to={'/'} className="product-card__link">
+                <Link to={`/product/${product.slug.current}`} className="product-card__link">
                     <div className="image-wrapper">
                         <GatsbyImage image={image} alt={product.name} />
                     </div>

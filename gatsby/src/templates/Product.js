@@ -35,7 +35,7 @@ export default function SingleProductPage({ data }) {
                                 className="snipcart-add-item"
                                 data-item-id={product.id}
                                 data-item-price={product.price}
-                                data-item-url={`https://cybercurio.netlify.app/product/${product.slug.current}`}
+                                data-item-url={`/product/${product.slug.current}`}
                                 data-item-description={product.description}
                                 data-item-image={product.image.asset.fluid.src}
                                 data-item-name={product.name}

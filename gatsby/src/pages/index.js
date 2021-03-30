@@ -47,6 +47,9 @@ export const query = graphql`
             gatsbyImageData(
               placeholder: BLURRED
             )
+            fluid {
+              src
+            }
           }
         }
       }

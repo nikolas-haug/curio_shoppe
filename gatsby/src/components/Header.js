@@ -48,6 +48,9 @@ export default function Header() {
                         <li>
                             <Link to={'/'}>Contact</Link>
                         </li>
+                        <li>
+                            <button className="snipcart-checkout">Cart (<span className="snipcart-items-count"></span>)</button>
+                        </li>
                     </ul>
                 </NavStyles>
             </HeaderStyles>

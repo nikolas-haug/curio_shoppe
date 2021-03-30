@@ -18,6 +18,7 @@ const SingleProductStyles = styled.div`
 
 export default function SingleProductPage({ data }) {
    const { product } = data;
+   console.log(product);
    const image = getImage(product.image.asset);
 
     return (
@@ -30,7 +31,15 @@ export default function SingleProductPage({ data }) {
                         <p className="product__description">{product.description}</p>
                         <p>${product.price}</p>
                         <div className="product__action">
-                            <button>add to cart</button>
+                            <button 
+                                className="snipcart-add-item"
+                                data-item-id={product.id}
+                                data-item-price={product.price}
+                                data-item-url={`/product/${product.slug.current}`}
+                                data-item-description={product.description}
+                                data-item-image={product.image.asset.fluid.src}
+                                data-item-name={product.name}
+                            >add to cart</button>
                         </div>
                         <Link to={'/'}>go back to all products</Link>
                     </div>
@@ -53,6 +62,9 @@ export const query = graphql`
                     gatsbyImageData(
                         placeholder: BLURRED
                     )
+                    fluid {
+                        src
+                    }
                 }
             }
             slug {

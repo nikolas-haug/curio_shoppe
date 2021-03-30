@@ -31,16 +31,16 @@ module.exports = {
         token: process.env.SANITY_TOKEN
       }
     },
-    // {
-    //   resolve: `gatsby-plugin-snipcart-advanced`,
-    //   options: {
-    //     version: '3.0.29',
-    //     publicApiKey: '',
-    //     defaultLang: 'en',
-    //     currencey: 'usd',
-    //     openCartOnAdd: true,
-    //     useSideCart: true
-    //   }
-    // }
+    {
+      resolve: `gatsby-plugin-snipcart-advanced`,
+      options: {
+        version: '3.0.29',
+        publicApiKey: 'OGVjMGUyY2ItYzk0ZC00MmY2LWIyN2ItOTk0ODU5NzNjOTkyNjM3NDEzMzY3ODQzMzYwNTgx',
+        defaultLang: 'en',
+        // currencey: 'usd',
+        openCartOnAdd: true,
+        useSideCart: true
+      }
+    }
   ],
 }

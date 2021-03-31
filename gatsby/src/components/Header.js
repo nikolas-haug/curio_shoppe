@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import { TiShoppingCart } from 'react-icons/ti';
 import styled from 'styled-components';
 
 const HeaderStyles = styled.header`
@@ -26,6 +27,14 @@ const NavStyles = styled.nav`
         font-size: 1.8rem;
     }
 
+    .snipcart-checkout {
+        display: flex;
+        margin: 0;
+        svg {
+            margin-right: .5rem;
+        }
+    }
+
 `;
 
 export default function Header() {
@@ -49,7 +58,9 @@ export default function Header() {
                             <Link to={'/'}>Contact</Link>
                         </li>
                         <li>
-                            <button className="snipcart-checkout">Cart (<span className="snipcart-items-count"></span>)</button>
+                            <button className="snipcart-checkout">
+                                <TiShoppingCart /> (<span className="snipcart-items-count"></span>)
+                            </button>
                         </li>
                     </ul>
                 </NavStyles>

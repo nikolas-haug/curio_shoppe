@@ -8,7 +8,9 @@ const ProductCardStyles = styled.div`
     border-radius: 5px;
     border: 1px solid #dedede;
     overflow: hidden;
-    transition: all .2s ease;
+    opacity: 0;
+    transition: all .5s ease;
+    animation: fade-in 1s ease forwards;
 
     &:hover {
         box-shadow: 0 2px 5px #ccc;
@@ -37,14 +39,23 @@ const ProductCardStyles = styled.div`
         }
     }
 
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 100%
+        }
+    }
+
 `;
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, delay }) {
     const image = getImage(product.image.asset);
 
     return (
         <>
-            <ProductCardStyles>
+            <ProductCardStyles style={{ animationDelay: `${delay * 100}ms` }}>
                 <Link to={`/product/${product.slug.current}`} className="product-card__link">
                     <div className="image-wrapper">
                         <GatsbyImage image={image} alt={product.name} />

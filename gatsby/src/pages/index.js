@@ -11,8 +11,8 @@ export default function Home({ data }) {
     <>
       <Main>
         <ProductGrid>
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
+          {products.map((product, i) => (
+            <ProductCard key={product.id} product={product} delay={i} />
           ))}
         </ProductGrid>
       </Main>

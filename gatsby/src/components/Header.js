@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import { TiShoppingCart } from 'react-icons/ti';
 import styled from 'styled-components';
 
 const HeaderStyles = styled.header`
@@ -22,8 +23,23 @@ const NavStyles = styled.nav`
         }
     }
 
-    a {
+    .nav-link {
         font-size: 1.8rem;
+        color: var(--color-black);
+        padding: 1rem 1.5rem;
+        border-radius: 5px;
+        transition: all .18s ease;
+        &:hover {
+            background-color: var(--color-blue-1);
+        }
+    }
+
+    .snipcart-checkout {
+        display: flex;
+        margin: 0;
+        svg {
+            margin-right: .5rem;
+        }
     }
 
 `;
@@ -34,22 +50,23 @@ export default function Header() {
             <HeaderStyles>
                 <NavStyles>
                     <Link to={'/'}>
-                        {/* <img src="https://source.unsplash.com/55x55" alt=""/> */}
                         <h1>CYBERCURIO</h1>
                         <h1 className="visually-hidden">CyberCurio</h1>
                     </Link>
                     <ul>
                         <li>
-                            <Link to={'/'}>Home</Link>
+                            <Link to={'/'} className="nav-link">Home</Link>
                         </li>
                         <li>
-                            <Link to={'/about'}>About</Link>
+                            <Link to={'/about'} className="nav-link">About</Link>
                         </li>
                         <li>
-                            <Link to={'/'}>Contact</Link>
+                            <Link to={'/'} className="nav-link">Contact</Link>
                         </li>
                         <li>
-                            <button className="snipcart-checkout">Cart (<span className="snipcart-items-count"></span>)</button>
+                            <button className="snipcart-checkout">
+                                <TiShoppingCart /> (<span className="snipcart-items-count"></span>)
+                            </button>
                         </li>
                     </ul>
                 </NavStyles>

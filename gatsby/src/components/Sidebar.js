@@ -30,7 +30,7 @@ const SidebarStyles = styled.aside`
         color: var(--color-black);
         border-radius: 5px;
         padding: .5rem;
-        transition: all .2s ease;
+        transition: all .18s ease;
         &:hover {
             background-color: var(--color-grey-1);
             color: var(--color-white);

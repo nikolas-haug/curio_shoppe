@@ -39,6 +39,16 @@ const ProductCardStyles = styled.div`
         }
     }
 
+    .product-card__snipcart-api {
+        position: absolute;
+        left: -5000px;
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        visibility: hidden;
+    }
+
     @keyframes fade-in {
         0% {
             opacity: 0;
@@ -65,6 +75,18 @@ export default function ProductCard({ product, delay }) {
                         <span>$ {product.price}</span>
                     </div>
                 </Link>
+                {/* hidden product details 'button' for snipcart api fetch */}
+                <div className="product-card__snipcart-api snipcart-add-item"
+                    aria-hidden="true"
+                    data-item-id={product.id}
+                    data-item-price={product.price}
+                    data-item-url={`/`}
+                    data-item-description={product.description}
+                    data-item-image={product.image.asset.fluid.src}
+                    data-item-name={product.name}
+                >
+                hidden snipcart api
+                </div>
             </ProductCardStyles>
         </>
     )

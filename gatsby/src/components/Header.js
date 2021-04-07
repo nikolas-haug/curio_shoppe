@@ -4,23 +4,24 @@ import { TiShoppingCart } from 'react-icons/ti';
 import styled from 'styled-components';
 
 const HeaderStyles = styled.header`
-
+    position: relative;
     padding: 1.5rem;
 
 `;
 
 const NavStyles = styled.nav`
-
     display: flex;
-    justify-content: space-between;
+`;
 
-    ul {
-        display: flex;
-        align-items: center;
-
-        li {
-            margin: 0 1.5rem;
-        }
+const ListStyles = styled.ul`
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    @media (max-width: 625px) {
+        display: none;
+    }
+    li {
+        margin: 0 1.5rem;
     }
 
     .nav-link {
@@ -34,6 +35,18 @@ const NavStyles = styled.nav`
         }
     }
 
+`;
+
+const CartStyles = styled.div`
+    display: flex;
+    align-items: center;
+    @media (max-width: 625px) {
+        position: absolute;
+        top: 50%;
+        right: 1.5rem;
+        transform: translateY(-50%);
+        
+    }
     .snipcart-checkout {
         display: flex;
         margin: 0;
@@ -41,7 +54,6 @@ const NavStyles = styled.nav`
             margin-right: .5rem;
         }
     }
-
 `;
 
 export default function Header() {
@@ -53,7 +65,7 @@ export default function Header() {
                         <h1>CYBERCURIO</h1>
                         <h1 className="visually-hidden">CyberCurio</h1>
                     </Link>
-                    <ul>
+                    <ListStyles>
                         <li>
                             <Link to={'/'} className="nav-link">Home</Link>
                         </li>
@@ -63,12 +75,12 @@ export default function Header() {
                         <li>
                             <Link to={'/'} className="nav-link">Contact</Link>
                         </li>
-                        <li>
-                            <button className="snipcart-checkout">
-                                <TiShoppingCart /> (<span className="snipcart-items-count"></span>)
-                            </button>
-                        </li>
-                    </ul>
+                    </ListStyles>
+                    <CartStyles>
+                        <button className="snipcart-checkout">
+                            <TiShoppingCart /> (<span className="snipcart-items-count"></span>)
+                        </button>
+                    </CartStyles>
                 </NavStyles>
             </HeaderStyles>
         </>

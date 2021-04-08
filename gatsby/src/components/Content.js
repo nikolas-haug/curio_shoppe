@@ -3,11 +3,15 @@ import styled from 'styled-components';
 
 const ContentStyles = styled.section`
 
-    width: 75%;
+    @media (min-width: 925px) {
+        width: 75%;
+    }
     padding: 0 1.5rem;
 
-    &.sticky {
-        margin-left: 25%;
+    @media (min-width: 925px) {
+        &.sticky {
+            margin-left: 25%;
+        }
     }
 
 `;

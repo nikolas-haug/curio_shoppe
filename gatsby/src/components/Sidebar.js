@@ -4,8 +4,13 @@ import styled from 'styled-components';
 
 const SidebarStyles = styled.aside`
 
-    @media (min-width: 925px) {
+    @media (min-width: 1025px) {
         width: 25%;
+        &.sticky {
+            position: fixed;
+            top: 0;
+            width: auto;
+        }
     }
     padding: 1.5rem 1.5rem;
 
@@ -17,7 +22,7 @@ const SidebarStyles = styled.aside`
     ul {
         background-color: var(--color-blue-1);
         padding: 2rem;
-        @media (min-width: 925px) {
+        @media (min-width: 1025px) {
             //TODO: adjust fixed margin accordingly
             width: ${ props => props.sticky ? '222.5px' : 'auto' };
         }
@@ -38,13 +43,6 @@ const SidebarStyles = styled.aside`
         &:hover {
             background-color: var(--color-grey-1);
             color: var(--color-white);
-        }
-    }
-    @media (min-width: 925px) {
-        &.sticky {
-            position: fixed;
-            top: 0;
-            width: auto;
         }
     }
 

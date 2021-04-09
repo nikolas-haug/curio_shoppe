@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { TiShoppingCart } from 'react-icons/ti';
+import { FaBars } from 'react-icons/fa';
 import styled from 'styled-components';
 
 const HeaderStyles = styled.header`
@@ -56,6 +57,15 @@ const CartStyles = styled.div`
     }
 `;
 
+const NavToggleStyles = styled.button`
+
+    background-color: transparent;
+    color: #333;
+    margin: 0;
+    font-size: 1.8rem;
+
+`;
+
 export default function Header() {
     return (
         <>
@@ -65,6 +75,9 @@ export default function Header() {
                         <h1>CYBERCURIO</h1>
                         <h1 className="visually-hidden">CyberCurio</h1>
                     </Link>
+                    <NavToggleStyles>
+                        <FaBars />
+                    </NavToggleStyles>
                     <ListStyles>
                         <li>
                             <Link to={'/'} className="nav-link">Home</Link>

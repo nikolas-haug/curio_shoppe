@@ -39,6 +39,8 @@ export default function SingleProductPage({ data }) {
                                 data-item-description={product.description}
                                 data-item-image={product.image.asset.fluid.src}
                                 data-item-name={product.name}
+                                data-item-custom1-name={product.variants.length ? 'Size' : ''}
+                                data-item-custom1-options={product.variants.length ? product.variants[0].sizes.join('|') : ''}
                             >add to cart</button>
                         </div>
                         <Link to={'/'}>go back to all products</Link>
@@ -57,6 +59,9 @@ export const query = graphql`
             name
             price
             description
+            variants {
+                sizes
+            }
             image {
                 asset {
                     gatsbyImageData(

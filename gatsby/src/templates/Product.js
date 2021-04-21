@@ -30,6 +30,7 @@ export default function SingleProductPage({ data }) {
                         <h2 className="product__title">{product.name}</h2>
                         <p className="product__description">{product.description}</p>
                         <p>${product.price}</p>
+                        {product.variants.length > 0 && <><p>available sizes:</p><p>{product.variants[0].sizes.join(', ')}</p></>}
                         <div className="product__action">
                             <button 
                                 className="snipcart-add-item"

@@ -21,11 +21,9 @@ const ProductCardStyles = styled.div`
         padding: 1rem;
     }
 
-    .image-wrapper {
-        img {
-            max-width: 100%;
-            display: block;
-        }
+    .gatsby-image-wrapper {
+        height: 27.5rem;
+        display: block;
     }
 
     .product-card__action {
@@ -67,9 +65,7 @@ export default function ProductCard({ product, delay }) {
         <>
             <ProductCardStyles style={{ animationDelay: `${delay * 100}ms` }}>
                 <Link to={`/product/${product.slug.current}`} className="product-card__link">
-                    <div className="image-wrapper">
-                        <GatsbyImage image={image} alt={product.name} />
-                    </div>
+                    <GatsbyImage image={image} alt={product.name} />
                     <div className="product-card__action">
                         <h3>{product.name}</h3>
                         <span>$ {product.price}</span>
@@ -84,6 +80,8 @@ export default function ProductCard({ product, delay }) {
                     data-item-description={product.description}
                     data-item-image={product.image.asset.fluid.src}
                     data-item-name={product.name}
+                    data-item-custom1-name={product.variants.length ? 'Size' : ''}
+                    data-item-custom1-options={product.variants.length ? product.variants[0].sizes.join('|') : ''}
                 >
                 hidden snipcart api
                 </div>

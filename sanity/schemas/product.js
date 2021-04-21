@@ -11,6 +11,17 @@ export default {
             validation: Rule => Rule.required()
         },
         {
+            title: 'Variants',
+            name: 'variants',
+            type: 'array',
+            of: [
+              {
+                title: 'Variant',
+                type: 'productVariant'
+              }
+            ]
+        },
+        {
             name: 'slug',
             title: 'Slug',
             type: 'slug',

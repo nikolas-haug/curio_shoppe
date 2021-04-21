@@ -42,6 +42,9 @@ export const query = graphql`
         slug {
           current
         }
+        variants {
+          sizes
+        }
         image {
           asset {
             gatsbyImageData(

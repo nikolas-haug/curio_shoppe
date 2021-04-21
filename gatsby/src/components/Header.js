@@ -19,7 +19,20 @@ const ListStyles = styled.ul`
     align-items: center;
     margin-left: auto;
     @media (max-width: 625px) {
-        display: none;
+        height: 0;
+        overflow: hidden;
+        opacity: 0;
+        display: flex;
+        flex-direction: column;
+        background: blue;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 999;
+        padding: 5rem 0 0 0;
+        transition: opacity .5s ease;
     }
     li {
         margin: 0 1.5rem;
@@ -59,10 +72,14 @@ const CartStyles = styled.div`
 
 const NavToggleStyles = styled.button`
 
+    display: none;
     background-color: transparent;
     color: #333;
     margin: 0;
     font-size: 1.8rem;
+    @media (max-width: 625px) {
+        display: block;
+    }
 
 `;
 
@@ -71,13 +88,13 @@ export default function Header() {
         <>
             <HeaderStyles>
                 <NavStyles>
+                    <NavToggleStyles>
+                        <FaBars />
+                    </NavToggleStyles>
                     <Link to={'/'}>
                         <h1>CYBERCURIO</h1>
                         <h1 className="visually-hidden">CyberCurio</h1>
                     </Link>
-                    <NavToggleStyles>
-                        <FaBars />
-                    </NavToggleStyles>
                     <ListStyles>
                         <li>
                             <Link to={'/'} className="nav-link">Home</Link>

@@ -3,12 +3,13 @@ import styled from 'styled-components';
 
 const ContentStyles = styled.section`
 
-    width: 75%;
-    padding: 0 1.5rem;
-
-    &.sticky {
-        margin-left: 25%;
+    @media (min-width: 1025px) {
+        width: 75%;
+        &.sticky {
+            margin-left: 25%;
+        }
     }
+    padding: 0 1.5rem;
 
 `;
 

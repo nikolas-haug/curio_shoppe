@@ -7,7 +7,11 @@ import useSticky from '../utils/useSticky';
 const MainStyles = styled.main`
 
     display: flex;
+    flex-direction: column;
     padding-top: 3.5rem;
+    @media (min-width: 1025px) {
+        flex-direction: row;
+    }
 
 `;
 

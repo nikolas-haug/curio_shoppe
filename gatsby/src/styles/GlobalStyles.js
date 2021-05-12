@@ -86,7 +86,6 @@ const GlobalStyles = createGlobalStyle`
 
     button {
         display: block;
-        width: 100%;
         border-radius: 3px;
         border-style: none;
         background: var(--color-blue-3);

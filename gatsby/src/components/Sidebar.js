@@ -4,7 +4,14 @@ import styled from 'styled-components';
 
 const SidebarStyles = styled.aside`
 
-    width: 25%;
+    @media (min-width: 1025px) {
+        width: 25%;
+        &.sticky {
+            position: fixed;
+            top: 0;
+            width: auto;
+        }
+    }
     padding: 1.5rem 1.5rem;
 
     .sidebar__heading {
@@ -15,8 +22,10 @@ const SidebarStyles = styled.aside`
     ul {
         background-color: var(--color-blue-1);
         padding: 2rem;
-        //TODO: adjust fixed margin accordingly
-        width: ${ props => props.sticky ? '222.5px' : 'auto' };
+        @media (min-width: 1025px) {
+            //TODO: adjust fixed margin accordingly
+            width: ${ props => props.sticky ? '222.5px' : 'auto' };
+        }
         border-radius: 5px;
     }
 
@@ -35,12 +44,6 @@ const SidebarStyles = styled.aside`
             background-color: var(--color-grey-1);
             color: var(--color-white);
         }
-    }
-
-    &.sticky {
-        position: fixed;
-        top: 0;
-        width: auto;
     }
 
 `;
